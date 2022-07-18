@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>NeuCG</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="{{ url_for('static',filename='assets/img/Logo.png') }}"
+    />
+	<script type=text/javascript src="{{
+  url_for('static', filename='js/main.js') }}"></script>
+  </head>
+  <body onload="init()" >
+    <div >
+      <div>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: space-evenly">
+      <div style="display: flex; flex-direction: column">
+        <div>
+          <div>
+          <h1>input</h1>
+            <p>draw or randomly generate points.</p>
+          </div>
+          <div
+            id="ui"
+          >
+            
+            <a href="https://en.wikipedia.org/wiki/Convex_hull">
+              <button id="info">info</button>
+
+
+            </a>
+              
+           
+            <button
+              id="shuffle"
+              onclick="random()"
+            >
+              random
+            </button>
+            <button
+              id="clear"
+              onclick="erase()"
+            >
+              clear
+            </button>
+          </div>
+        <canvas
+          id="can"
+        ></canvas>
+        </div>
+          <button
+          id="submit"
+            onclick="submit()"
+          >
+            submit
+      </button>
+      </div>
+      <div style="display: flex; flex-direction: column">
+        <div>
+
+
+        <h1>output</h1>
+        <p>returns convex hull points.</p>
+        </div>
+        <div style="display: flex;flex-direction: row; justify-content: space-between;"
+        >
+          <form id="model_selector_wrap" method="POST">
+            <label for="prob" style="color: black">model:</label>
+            <select name="prob" id="model_selector">
+              <option value="oracle">oracle</option>
+              <option value="crf">crf</option>
+              <option value="rnn">rnn</option>
+              <option value="gru">gru</option>
+              <option value="lstm">lstm</option>
+              <option value="pix">pix</option>
+              <option value="random">random</option>
+            </select>
+          </form>
+          <div>
+            <a href="https://github.com/fani-lab/NeuCG" style="cursor: pointer">
+              <i class="fa fa-github" style="font-size: 38px"></i>
+            </a>
+          </div>
+        </div>
+        <canvas
+          id="results"
+        ></canvas>
+        <button id="submit" onclick="save1()" style="background-color: #F19CC5">save</button>
+      </div>
+    </div>
+  </body>
+</html>
